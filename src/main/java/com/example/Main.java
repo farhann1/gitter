@@ -1,6 +1,13 @@
 package com.example;
 
-import com.example.gitter.commands.*;
+import com.example.gitter.commands.add.AddCommand;
+import com.example.gitter.commands.checkout.CheckoutCommand;
+import com.example.gitter.commands.commit.CommitCommand;
+import com.example.gitter.commands.diff.DiffCommand;
+import com.example.gitter.commands.init.InitCommand;
+import com.example.gitter.commands.log.LogCommand;
+import com.example.gitter.commands.reset.ResetCommand;
+import com.example.gitter.commands.status.StatusCommand;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 
@@ -43,4 +50,3 @@ public class Main implements Runnable {
         spec.commandLine().usage(System.out);
     }
 }
-

@@ -55,11 +55,13 @@ public class Messages {
     public static final String CHECKOUT_SWITCHED = "Switched to branch '%s'";
     public static final String CHECKOUT_SWITCHED_NEW = "Switched to a new branch '%s'";
     public static final String CHECKOUT_ALREADY_ON = "Already on '%s'";
+    public static final String ERROR_BRANCH_NAME_REQUIRED = "Branch name is required";
     
     // Init messages
     public static final String INIT_SUCCESS = "Initialized empty Gitter repository in %s";
     public static final String INIT_ALREADY_EXISTS = "Gitter repository already exists at %s";
     public static final String ERROR_FAILED_TO_INIT = "Failed to initialize gitter repository in %s";
+    public static final String ERROR_INIT_EXCEPTION = "Error: Failed to initialize repository - ";
     
     // Log messages
     public static final String LOG_NO_COMMITS = "No commits yet.";
@@ -74,12 +76,14 @@ public class Messages {
     public static final String ERROR_PATHSPEC_NO_MATCH = "Error: pathspec '%s' did not match any files";
     public static final String ERROR_FATAL_PATHSPEC_NO_MATCH = "fatal: pathspec '%s' did not match any files";
     public static final String ERROR_FAILED_TO_ADD = "Error: Failed to add files - ";
+    public static final String ERROR_FILE_PATTERN_REQUIRED = "At least one file pattern is required";
     
     // Commit command messages
     public static final String COMMIT_SUCCESS = "[%s %s] %s";
     public static final String COMMIT_FILES_CHANGED = "%d file(s) changed";
     public static final String ERROR_NOTHING_TO_COMMIT = "Error: Nothing to commit. Use 'gitter add' to stage files.";
     public static final String ERROR_FAILED_TO_COMMIT = "Error: Failed to create commit - ";
+    public static final String ERROR_COMMIT_MESSAGE_REQUIRED = "Error: Commit message is required";
 
     // Diff command messages
     public static final String DIFF_NO_CHANGES = "No changes detected.";
@@ -91,6 +95,7 @@ public class Messages {
     public static final String DIFF_CONTEXT_PREFIX = "  ";
     public static final String ERROR_FAILED_TO_DIFF = "Error: Failed to generate diff - ";
     public static final String ERROR_DIFF_GENERATION = "Error generating diff: ";
+    public static final String ERROR_FILE_PATH_REQUIRED = "File path is required";
     
     // Reset command messages
     public static final String RESET_UNSTAGED_ALL = "Unstaged all changes.";

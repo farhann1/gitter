@@ -1,16 +1,12 @@
-package com.example.gitter.commands;
+package com.example.gitter.commands.status;
 
-import com.example.gitter.models.WorkingDirectoryStatus;
+import com.example.gitter.commands.strategy.CommandStrategy;
 import com.example.gitter.utils.FileUtils;
-import com.example.gitter.utils.OutputFormatter;
-import com.example.gitter.utils.RepositoryState;
 import picocli.CommandLine.Command;
 
-import java.io.IOException;
 import java.util.concurrent.Callable;
 
-import static com.example.gitter.constants.Messages.ERROR_NOT_INITIALIZED;
-import static com.example.gitter.constants.Messages.ERROR_FAILED_TO_READ;
+import static com.example.gitter.constants.Messages.*;
 
 @Command(name = "status",
          synopsisHeading = "%nUSAGE%n",
@@ -41,12 +37,10 @@ public class StatusCommand implements Callable<Integer> {
         }
         
         try {
-            String currentBranch = RepositoryState.getCurrentBranch();
-            WorkingDirectoryStatus status = RepositoryState.getWorkingDirectoryStatus();
-            
-            OutputFormatter.displayStatus(currentBranch, status);
-            return 0;
-        } catch (IOException e) {
+            StatusOptions options = StatusOptions.builder().build();
+            CommandStrategy<StatusOptions> strategy = options.getStrategy();
+            return strategy.execute(options);
+        } catch (Exception e) {
             System.err.println(ERROR_FAILED_TO_READ + e.getMessage());
             return 1;
         }
