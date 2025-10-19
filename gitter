@@ -1,0 +1,17 @@
+#!/bin/bash
+# Gitter wrapper script
+
+# Get the directory where this script is located
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+JAR_FILE="$SCRIPT_DIR/target/gitter.jar"
+
+# Check if JAR exists
+if [ ! -f "$JAR_FILE" ]; then
+    echo "Error: gitter.jar not found. Please build the project first:"
+    echo "  cd $SCRIPT_DIR && mvn clean package"
+    exit 1
+fi
+
+# Run the JAR with all arguments passed to this script
+java -jar "$JAR_FILE" "$@"
+
