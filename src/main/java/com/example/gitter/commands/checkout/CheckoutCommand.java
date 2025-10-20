@@ -17,11 +17,13 @@ import static com.example.gitter.constants.Messages.*;
          },
          descriptionHeading = "%nDESCRIPTION%n",
          description = {
-             "  Switch branches or restore working tree files.",
+             "  Switch branch and restore working tree to match the branch.",
              "",
-             "  Updates files in the working tree to match the version in the index",
-             "  or the specified tree. If no pathspec was given, gitter checkout will",
-             "  also update HEAD to set the specified branch as the current branch."
+             "  Updates HEAD to set the specified branch as the current branch,",
+             "  and restores all files in the working tree to match the branch's",
+             "  latest commit.",
+             "",
+             "  IMPORTANT: Requires clean working directory - blocks if any uncommitted changes exist."
          },
          optionListHeading = "%nOPTIONS%n",
          parameterListHeading = "%nARGUMENTS%n"

@@ -22,8 +22,12 @@ public class UnstageFilesStrategy implements CommandStrategy<ResetOptions> {
         if (filesToUnstage.isEmpty()) {
             System.out.println(RESET_NO_FILES_UNSTAGED);
         } else {
-            Indexing.unstageFiles(filesToUnstage);
-            System.out.println(RESET_UNSTAGED_ALL);
+            int actualUnstagedCount = Indexing.unstageFiles(filesToUnstage);
+            if (actualUnstagedCount == 0) {
+                System.out.println(RESET_NO_FILES_UNSTAGED);
+            } else {
+                System.out.println(String.format(RESET_UNSTAGED_FILES, actualUnstagedCount));
+            }
         }
         
         return 0;

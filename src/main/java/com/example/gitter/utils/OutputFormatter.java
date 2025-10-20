@@ -44,39 +44,43 @@ public class OutputFormatter {
             EditList edits = DiffAlgorithm.getAlgorithm(DiffAlgorithm.SupportedAlgorithm.HISTOGRAM)
                     .diff(RawTextComparator.DEFAULT, oldText, newText);
             
-            int oldLine = 0;
-            
             for (Edit edit : edits) {
-                // Print context before the edit
-                while (oldLine < edit.getBeginA()) {
-                    System.out.println(DIFF_CONTEXT_PREFIX + oldText.getString(oldLine));
-                    oldLine++;
-                }
+                // Calculate hunk boundaries with context
+                int hunkStartA = Math.max(0, edit.getBeginA() - DIFF_CONTEXT_LINES);
+                int hunkEndA = Math.min(oldText.size(), edit.getEndA() + DIFF_CONTEXT_LINES);
+                int hunkStartB = Math.max(0, edit.getBeginB() - DIFF_CONTEXT_LINES);
+                int hunkEndB = Math.min(newText.size(), edit.getEndB() + DIFF_CONTEXT_LINES);
                 
-                // Print header for this hunk
+                int contextBefore = edit.getBeginA() - hunkStartA;
+                int contextAfter = hunkEndA - edit.getEndA();
+                
+                // Print hunk header with actual line numbers and counts
+                int oldCount = contextBefore + (edit.getEndA() - edit.getBeginA()) + contextAfter;
+                int newCount = contextBefore + (edit.getEndB() - edit.getBeginB()) + contextAfter;
+                
                 System.out.println(COLOR_CYAN + String.format(DIFF_HUNK_HEADER,
-                                 edit.getBeginA() + 1,
-                                 edit.getEndA() - edit.getBeginA(),
-                                 edit.getBeginB() + 1,
-                                 edit.getEndB() - edit.getBeginB()) + COLOR_RESET);
+                                 hunkStartA + 1, oldCount,
+                                 hunkStartB + 1, newCount) + COLOR_RESET);
+                
+                // Print context before the change
+                for (int i = hunkStartA; i < edit.getBeginA(); i++) {
+                    System.out.println(DIFF_CONTEXT_PREFIX + oldText.getString(i));
+                }
                 
                 // Print deletions
                 for (int i = edit.getBeginA(); i < edit.getEndA(); i++) {
                     System.out.println(COLOR_RED + DIFF_DELETION_PREFIX + oldText.getString(i) + COLOR_RESET);
-                    oldLine++;
                 }
                 
                 // Print insertions
                 for (int i = edit.getBeginB(); i < edit.getEndB(); i++) {
                     System.out.println(COLOR_GREEN + DIFF_ADDITION_PREFIX + newText.getString(i) + COLOR_RESET);
                 }
-            }
-            
-            int printed = 0;
-            while (oldLine < oldText.size() && printed < DIFF_CONTEXT_LINES) {
-                System.out.println(DIFF_CONTEXT_PREFIX + oldText.getString(oldLine));
-                oldLine++;
-                printed++;
+                
+                // Print context after the change
+                for (int i = edit.getEndA(); i < hunkEndA; i++) {
+                    System.out.println(DIFF_CONTEXT_PREFIX + oldText.getString(i));
+                }
             }
             
         } catch (Exception e) {
@@ -155,7 +159,7 @@ public class OutputFormatter {
         }
         
         System.out.println(STATUS_CHANGES_NOT_STAGED);
-        System.out.println(HINT_ADD_TO_UPDATE);
+        System.out.println(HINT_ADD_FILES);
         System.out.println();
         
         for (String file : status.getUnstagedModified()) {
@@ -175,7 +179,7 @@ public class OutputFormatter {
         }
         
         System.out.println(STATUS_UNTRACKED_FILES);
-        System.out.println(HINT_ADD_TO_TRACK);
+        System.out.println(HINT_ADD_FILES);
         System.out.println();
         
         for (String file : status.getUntracked()) {

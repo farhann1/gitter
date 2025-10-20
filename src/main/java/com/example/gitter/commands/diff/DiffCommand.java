@@ -24,8 +24,9 @@ import static com.example.gitter.constants.Messages.*;
              "    - Cyan lines show hunk headers (@@ line numbers)",
              "",
              "  NOTE: Only exact file paths are supported.",
-             "        Glob patterns (*.txt) and directories (src/) are not supported."
-         }
+             "        Glob patterns (*.txt) and directories (src/) are not supported yet."
+         },
+         parameterListHeading = "%nARGUMENTS%n"
 )
 public class DiffCommand implements Callable<Integer> {
     

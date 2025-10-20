@@ -15,16 +15,12 @@ import static com.example.gitter.constants.Messages.*;
          },
          descriptionHeading = "%nDESCRIPTION%n",
          description = {
-             "  Displays paths that have differences between the index file and the",
-             "  current HEAD commit, paths that have differences between the working",
-             "  tree and the index file, and paths in the working tree that are not",
-             "  tracked by Gitter.",
+             "  Shows the working tree status.",
              "",
-             "  The output is categorized into three sections:",
-             "",
-             "    1. Changes to be committed (staged for next commit)",
-             "    2. Changes not staged for commit (modified but not added)",  
-             "    3. Untracked files (not in index or any commit)"
+             "  Displays changes in three categories:",
+             "    • Changes staged for commit",
+             "    • Changes not staged for commit",
+             "    • Untracked files"
          }
 )
 public class StatusCommand implements Callable<Integer> {

@@ -35,7 +35,6 @@ public abstract class AbstractCheckoutStrategy implements CommandStrategy<Checko
         
         if (!status.isClean()) {
             System.err.println(ERROR_UNCOMMITTED_CHANGES);
-            System.err.println(ERROR_COMMIT_BEFORE_SWITCH);
             return false;
         }
         

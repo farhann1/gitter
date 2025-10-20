@@ -14,8 +14,7 @@ import static com.example.gitter.constants.Messages.ERROR_INIT_EXCEPTION;
          },
          descriptionHeading = "%nDESCRIPTION%n",
          description = {
-             "  This command creates an empty Gitter repository using Git's",
-             "  content-addressable object storage architecture.",
+             "  Creates an empty Gitter repository in current directory",
              "",
              "  The .gitter directory contains:",
              "  - objects/: Unified storage for all version-controlled content",

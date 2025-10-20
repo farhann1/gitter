@@ -14,10 +14,9 @@ import picocli.CommandLine.Command;
 @Command(
     name = "gitter",
     description = {
-        "Gitter - A lightweight Git-like version control system",
         "",
-        "Gitter is a distributed version control system for tracking changes in source code.",
-        "It uses content-addressable storage (SHA-1) to maintain file integrity."
+        "A lightweight version control system for tracking changes in source code.",
+        ""
     },
     version = "Gitter version 1.0.0",
     subcommands = {

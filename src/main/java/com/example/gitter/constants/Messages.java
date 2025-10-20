@@ -24,8 +24,7 @@ public class Messages {
     
     // Error messages
     public static final String ERROR_NOT_INITIALIZED = "Error: Not a gitter repository. Run 'gitter init' first.";
-    public static final String ERROR_UNCOMMITTED_CHANGES = "Error: You have uncommitted changes.";
-    public static final String ERROR_COMMIT_BEFORE_SWITCH = "Please commit your changes or reset before you switch branches.";
+    public static final String ERROR_UNCOMMITTED_CHANGES = "Error: You have uncommitted changes. Please commit or reset before switching branch.";
     public static final String ERROR_FAILED_TO_READ = "Error: Failed to read repository state - ";
     public static final String ERROR_FAILED_TO_CHECKOUT = "Error: Failed to checkout branch - ";
     public static final String ERROR_BRANCH_NOT_FOUND = "Error: pathspec '%s' did not match any file(s) known to gitter";
@@ -41,8 +40,7 @@ public class Messages {
     
     // Status hints
     public static final String HINT_RESET_TO_UNSTAGE = "  (use \"gitter reset\" to unstage)";
-    public static final String HINT_ADD_TO_UPDATE = "  (use \"gitter add <file>...\" to update what will be committed)";
-    public static final String HINT_ADD_TO_TRACK = "  (use \"gitter add <file>...\" to include in what will be committed)";
+    public static final String HINT_ADD_FILES = "  (use \"gitter add <file>...\" to stage)";
     
     // Status file prefixes
     public static final String STATUS_NEW_FILE = "  " + COLOR_GREEN + "new file:   %s" + COLOR_RESET;
@@ -54,7 +52,7 @@ public class Messages {
     // Checkout messages
     public static final String CHECKOUT_SWITCHED = "Switched to branch '%s'";
     public static final String CHECKOUT_SWITCHED_NEW = "Switched to a new branch '%s'";
-    public static final String CHECKOUT_ALREADY_ON = "Already on '%s'";
+    public static final String CHECKOUT_ALREADY_ON = "Already on branch '%s'";
     public static final String ERROR_BRANCH_NAME_REQUIRED = "Branch name is required";
     
     // Init messages
@@ -98,8 +96,8 @@ public class Messages {
     public static final String ERROR_FILE_PATH_REQUIRED = "File path is required";
     
     // Reset command messages
-    public static final String RESET_UNSTAGED_ALL = "Unstaged all changes.";
     public static final String RESET_NO_FILES_UNSTAGED = "No files were unstaged.";
+    public static final String RESET_UNSTAGED_FILES = "Unstaged %d file(s).";
     public static final String RESET_HEAD_AT = "HEAD is now at %s";
     public static final String ERROR_INVALID_COMMIT_REF = "Error: Invalid commit reference: %s";
     public static final String ERROR_NO_COMMITS_YET = "Error: No commits yet on branch %s";

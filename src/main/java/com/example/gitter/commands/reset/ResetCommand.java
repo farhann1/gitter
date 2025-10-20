@@ -14,30 +14,27 @@ import static com.example.gitter.constants.Messages.*;
 @Command(name = "reset",
          synopsisHeading = "%nUSAGE%n",
          customSynopsis = {
-             "  gitter reset [<commit>]",
-             "  gitter reset [<pathspec>...]"
+             "  gitter reset [<commit|file>...]"
          },
          descriptionHeading = "%nDESCRIPTION%n",
          description = {
-             "  Reset current HEAD to the specified state.",
+             "  Reset HEAD to a specific commit or unstage files.",
              "",
-             "  In the first form (with commit), resets the current branch head to <commit>",
-             "  and resets the index (but not the working tree) to match. This leaves all",
-             "  your changed files as \"Changes not staged for commit\".",
+             "  With <commit>: Moves HEAD to the commit, unstages all changes.",
+             "  With <pathspec>: Removes files from the staging area.",
              "",
-             "  In the second form (with pathspec), unstages files from the staging area.",
-             "",
-             "  Common usage:",
-             "    gitter reset HEAD~1      # Undo last commit, keep changes unstaged",
+             "  Examples:",
+             "    gitter reset HEAD~1      # Undo last commit",
              "    gitter reset HEAD~2      # Undo last 2 commits",
-             "    gitter reset file.txt    # Unstage specific file"
+             "    gitter reset file.txt    # Unstage specific file",
+             "    gitter reset '*.txt'     # Unstage pattern (use quote)"
          },
          parameterListHeading = "%nARGUMENTS%n"
 )
 public class ResetCommand implements Callable<Integer> {
     
-    @Parameters(paramLabel = "<commit-or-file>",
-                description = "Commit reference (e.g., HEAD~1) or file to unstage",
+    @Parameters(paramLabel = "<commit|file>",
+                description = "Commit or file pattern",
                 arity = "0..*")
     private List<String> args = new ArrayList<>();
     

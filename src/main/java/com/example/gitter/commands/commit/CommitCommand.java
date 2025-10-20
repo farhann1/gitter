@@ -12,18 +12,14 @@ import static com.example.gitter.constants.Messages.*;
 @Command(name = "commit",
          synopsisHeading = "%nUSAGE%n",
          customSynopsis = {
-             "  gitter commit -m <msg>",
-             "  gitter commit -am <msg>"
+             "  gitter commit [-a] -m <msg>"
          },
          descriptionHeading = "%nDESCRIPTION%n",
          description = {
-             "  Create a new commit containing the current contents of the index",
-             "  with the given log message describing the changes.",
+             "  Record changes to the repository.",
              "",
-             "  The commit message should describe what changes are being made and why.",
-             "",
-             "  With -a flag, automatically stages modified and deleted tracked files",
-             "  before committing (does not stage new untracked files)."
+             "  Creates a snapshot of the staged changes with the given log message.",
+             "  The message should describe what changes are being made and why."
          },
          optionListHeading = "%nOPTIONS%n",
          sortOptions = false

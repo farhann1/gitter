@@ -17,19 +17,22 @@ import static com.example.gitter.constants.Messages.*;
          },
          descriptionHeading = "%nDESCRIPTION%n",
          description = {
-             "  This command updates the index using the current content found in",
-             "  the working tree, to prepare the content staged for the next commit.",
+             "  Stage content for the next commit.",
              "",
-             "  The 'add' command can be performed multiple times before a commit.",
-             "  It only adds the content of the specified file(s) at the time the",
-             "  add command is run."
+             "  Supports:",
+             "    • Multiple file names:  gitter add file1.txt file2.txt",
+             "    • Directory paths:      gitter add src/",
+             "    • Wildcards:            gitter add '*.java' (use quote)",
+             "    • Current directory:    gitter add .",
+             "",
+             "  Can be run multiple times to stage additional changes before committing."
          },
          parameterListHeading = "%nARGUMENTS%n"
 )
 public class AddCommand implements Callable<Integer> {
     
     @Parameters(paramLabel = "<pathspec>", 
-                description = "Files to add content from. Fileglobs (e.g. *.c) can be given to add all matching files.",
+                description = "Files, directories, or patterns to stage",
                 arity = "1..*")
     private List<String> files;
     
