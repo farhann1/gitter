@@ -1,4 +1,4 @@
-package com.example;
+package com.example.gitter;
 
 import com.example.gitter.commands.add.AddCommand;
 import com.example.gitter.commands.checkout.CheckoutCommand;
@@ -32,13 +32,13 @@ import picocli.CommandLine.Command;
         CommandLine.HelpCommand.class
     }
 )
-public class Main implements Runnable {
+public class App implements Runnable {
     
     @CommandLine.Spec
     CommandLine.Model.CommandSpec spec;
 
     public static void main(String[] args) {
-        int exitCode = new CommandLine(new Main())
+        int exitCode = new CommandLine(new App())
             .setUsageHelpAutoWidth(true)
             .execute(args);
         System.exit(exitCode);

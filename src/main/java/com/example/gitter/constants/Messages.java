@@ -59,7 +59,7 @@ public class Messages {
     
     // Init messages
     public static final String INIT_SUCCESS = "Initialized empty Gitter repository in %s";
-    public static final String INIT_ALREADY_EXISTS = "Gitter repository already exists at %s";
+    public static final String INIT_ALREADY_EXISTS = "Gitter repository is already initialized in %s";
     public static final String ERROR_FAILED_TO_INIT = "Failed to initialize gitter repository in %s";
     public static final String ERROR_INIT_EXCEPTION = "Error: Failed to initialize repository - ";
     

@@ -44,7 +44,7 @@ public class CheckoutOptions {
     
     public CommandStrategy<CheckoutOptions> getStrategy() {
         if (createBranch) {
-            return new CreateBranchCheckoutStrategy();
+            return new CreateBranchStrategy();
         }
         return new StandardCheckoutStrategy();
     }

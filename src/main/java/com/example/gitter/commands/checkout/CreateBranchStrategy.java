@@ -10,7 +10,7 @@ import static com.example.gitter.constants.Constants.NEWLINE;
 import static com.example.gitter.constants.Messages.*;
 import static com.example.gitter.constants.PathConstants.HEAD;
 
-public class CreateBranchCheckoutStrategy extends AbstractCheckoutStrategy {
+public class CreateBranchStrategy extends AbstractCheckoutStrategy {
     
     @Override
     protected boolean validateCheckout(CheckoutOptions options, Path branchFile) throws IOException {

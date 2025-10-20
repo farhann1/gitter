@@ -3,6 +3,7 @@ package com.example.gitter.constants;
 public class Constants {
     public static final String USER_DIR = "user.dir";
     public static final String GITTER_DIR = ".gitter";
+    public static final String GITTERIGNORE_FILE = ".gitterignore";
     public static final String DEFAULT_BRANCH = "main";
     public static final String NEWLINE = "\n";
     public static final String SPACE = " ";

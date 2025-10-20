@@ -29,10 +29,11 @@ public class RepositoryState {
     public static Map<String, String> getWorkingFiles() throws IOException {
         Map<String, String> result = new HashMap<>();
         Path workingDir = GITTER.getParent();
+        GitterIgnore gitterIgnore = GitterIgnore.getInstance();
         
         try (var stream = Files.walk(workingDir)) {
             stream.filter(Files::isRegularFile)
-                  .filter(path -> !FileUtils.isInsideGitterDir(path))
+                  .filter(path -> !gitterIgnore.shouldIgnore(FileUtils.getRelativePath(path).toString()))
                   .forEach(path -> {
                       try {
                           String relativePath = FileUtils.getRelativePath(path).toString();

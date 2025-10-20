@@ -16,10 +16,6 @@ public class FileUtils {
         return Files.exists(GITTER) && Files.isDirectory(GITTER);
     }
 
-    public static boolean isInsideGitterDir(Path path) {
-        return path.toAbsolutePath().startsWith(GITTER.toAbsolutePath());
-    }
-
     public static Path getRelativePath(Path file) {
         Path workingDir = GITTER.getParent();
         return workingDir.relativize(file);

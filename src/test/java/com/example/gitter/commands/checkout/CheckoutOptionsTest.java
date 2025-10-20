@@ -100,7 +100,7 @@ class CheckoutOptionsTest {
 
         CommandStrategy<CheckoutOptions> strategy = options.getStrategy();
         assertNotNull(strategy);
-        assertInstanceOf(CreateBranchCheckoutStrategy.class, strategy);
+        assertInstanceOf(CreateBranchStrategy.class, strategy);
     }
 }
 
