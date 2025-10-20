@@ -11,22 +11,25 @@ import java.util.concurrent.Callable;
 import static com.example.gitter.constants.Messages.*;
 
 @Command(name = "checkout",
-         synopsisHeading = "%nUSAGE%n",
+         synopsisHeading = "",
          customSynopsis = {
-             "  gitter checkout [-b] <branch>"
+             "NAME:",
+             "  checkout - Switch branch and restore working tree to match it",
+             "",
+             "SYNOPSIS:",
+             "  gitter checkout [-b] <branch>",
+             ""
          },
-         descriptionHeading = "%nDESCRIPTION%n",
+         descriptionHeading = "DESCRIPTION:%n",
          description = {
-             "  Switch branch and restore working tree to match the branch.",
+             "  Switch branch and restore working tree to match it",
              "",
-             "  Updates HEAD to set the specified branch as the current branch,",
-             "  and restores all files in the working tree to match the branch's",
-             "  latest commit.",
-             "",
-             "  IMPORTANT: Requires clean working directory - blocks if any uncommitted changes exist."
+             "  Switches to the specified branch and updates all files in the working tree",
+             "  to match that branch. Requires a clean working directory to prevent data loss.",
+             ""
          },
-         optionListHeading = "%nOPTIONS%n",
-         parameterListHeading = "%nARGUMENTS%n"
+         optionListHeading = "OPTIONS:%n",
+         parameterListHeading = "ARGUMENTS:%n"
 )
 public class CheckoutCommand implements Callable<Integer> {
     

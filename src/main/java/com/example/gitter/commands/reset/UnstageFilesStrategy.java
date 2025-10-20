@@ -11,7 +11,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import static com.example.gitter.constants.Messages.*;
+import static com.example.gitter.constants.Messages.ERROR_PATHSPEC_NO_MATCH;
 
 public class UnstageFilesStrategy implements CommandStrategy<ResetOptions> {
     
@@ -19,15 +19,8 @@ public class UnstageFilesStrategy implements CommandStrategy<ResetOptions> {
     public Integer execute(ResetOptions options) throws IOException {
         Set<String> filesToUnstage = findFilesToUnstage(options);
         
-        if (filesToUnstage.isEmpty()) {
-            System.out.println(RESET_NO_FILES_UNSTAGED);
-        } else {
-            int actualUnstagedCount = Indexing.unstageFiles(filesToUnstage);
-            if (actualUnstagedCount == 0) {
-                System.out.println(RESET_NO_FILES_UNSTAGED);
-            } else {
-                System.out.println(String.format(RESET_UNSTAGED_FILES, actualUnstagedCount));
-            }
+        if (!filesToUnstage.isEmpty()) {
+            Indexing.unstageFiles(filesToUnstage);
         }
         
         return 0;

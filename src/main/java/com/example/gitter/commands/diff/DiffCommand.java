@@ -3,37 +3,31 @@ package com.example.gitter.commands.diff;
 import com.example.gitter.commands.strategy.CommandStrategy;
 import com.example.gitter.utils.FileUtils;
 import picocli.CommandLine.Command;
-import picocli.CommandLine.Parameters;
 
 import java.util.concurrent.Callable;
 
 import static com.example.gitter.constants.Messages.*;
 
 @Command(name = "diff",
-         synopsisHeading = "%nUSAGE%n",
+         synopsisHeading = "",
          customSynopsis = {
-             "  gitter diff <file>"
+             "NAME:",
+             "  diff - Shows changes between the working tree and the index",
+             "",
+             "SYNOPSIS:",
+             "  gitter diff",
+             ""
          },
-         descriptionHeading = "%nDESCRIPTION%n",
+         descriptionHeading = "DESCRIPTION:%n",
          description = {
-             "  Show changes between the working tree and the index for a file.",
+             "  Shows changes between the working tree and the index",
              "",
-             "  The output uses unified diff format with color coding:",
-             "    - Red lines (prefixed with -) indicate deletions",
-             "    - Green lines (prefixed with +) indicate additions",
-             "    - Cyan lines show hunk headers (@@ line numbers)",
-             "",
-             "  NOTE: Only exact file paths are supported.",
-             "        Glob patterns (*.txt) and directories (src/) are not supported yet."
-         },
-         parameterListHeading = "%nARGUMENTS%n"
+             "  Shows unstaged changes for all modified files in unified diff format.",
+             "  Compares the working tree version against what's staged in the index.",
+             ""
+         }
 )
 public class DiffCommand implements Callable<Integer> {
-    
-    @Parameters(index = "0",
-                paramLabel = "<file>",
-                description = "File to show diff for")
-    private String file;
     
     @Override
     public Integer call() {
@@ -43,10 +37,7 @@ public class DiffCommand implements Callable<Integer> {
         }
         
         try {
-            DiffOptions options = DiffOptions.builder()
-                    .file(file)
-                    .build();
-            
+            DiffOptions options = DiffOptions.builder().build();
             CommandStrategy<DiffOptions> strategy = options.getStrategy();
             return strategy.execute(options);
             

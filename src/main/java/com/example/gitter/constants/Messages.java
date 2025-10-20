@@ -15,7 +15,6 @@ public class Messages {
     public static final String COLOR_GREEN = "\u001B[32m";
     public static final String COLOR_YELLOW = "\u001B[33m";
     public static final String COLOR_CYAN = "\u001B[36m";
-    public static final String COLOR_BOLD = "\u001B[1m";
 
     // Date formatting for log output
     public static final DateTimeFormatter LOG_DATE_FORMATTER = DateTimeFormatter
@@ -62,43 +61,31 @@ public class Messages {
     public static final String ERROR_INIT_EXCEPTION = "Error: Failed to initialize repository - ";
     
     // Log messages
-    public static final String LOG_NO_COMMITS = "No commits yet.";
+    public static final String LOG_NO_COMMITS = "Your current branch has no commits.";
     public static final String LOG_COMMIT_HASH = COLOR_YELLOW + "commit %s" + COLOR_RESET;
     public static final String LOG_AUTHOR = "Author: user";
     public static final String LOG_DATE = "Date:   %s";
     public static final String LOG_MESSAGE_INDENT = "    ";
     public static final String ERROR_FAILED_TO_READ_LOG = "Error: Failed to read commit log - ";
     
-    // Add command messages
-    public static final String ADD_SUCCESS = "Files added to staging area.";
     public static final String ERROR_PATHSPEC_NO_MATCH = "Error: pathspec '%s' did not match any files";
-    public static final String ERROR_FATAL_PATHSPEC_NO_MATCH = "fatal: pathspec '%s' did not match any files";
     public static final String ERROR_FAILED_TO_ADD = "Error: Failed to add files - ";
     public static final String ERROR_FILE_PATTERN_REQUIRED = "At least one file pattern is required";
     
-    // Commit command messages
-    public static final String COMMIT_SUCCESS = "[%s %s] %s";
-    public static final String COMMIT_FILES_CHANGED = "%d file(s) changed";
     public static final String ERROR_NOTHING_TO_COMMIT = "Error: Nothing to commit. Use 'gitter add' to stage files.";
     public static final String ERROR_FAILED_TO_COMMIT = "Error: Failed to create commit - ";
     public static final String ERROR_COMMIT_MESSAGE_REQUIRED = "Error: Commit message is required";
 
     // Diff command messages
-    public static final String DIFF_NO_CHANGES = "No changes detected.";
-    public static final String DIFF_HEADER = "diff --gitter a/%s b/%s";
-    public static final String DIFF_DELETED_FILE = "deleted file";
+    public static final String DIFF_HEADER_A = "--- a/%s";
+    public static final String DIFF_HEADER_B = "+++ b/%s";
     public static final String DIFF_HUNK_HEADER = "@@ -%d,%d +%d,%d @@";
     public static final String DIFF_DELETION_PREFIX = "- ";
     public static final String DIFF_ADDITION_PREFIX = "+ ";
     public static final String DIFF_CONTEXT_PREFIX = "  ";
     public static final String ERROR_FAILED_TO_DIFF = "Error: Failed to generate diff - ";
     public static final String ERROR_DIFF_GENERATION = "Error generating diff: ";
-    public static final String ERROR_FILE_PATH_REQUIRED = "File path is required";
     
-    // Reset command messages
-    public static final String RESET_NO_FILES_UNSTAGED = "No files were unstaged.";
-    public static final String RESET_UNSTAGED_FILES = "Unstaged %d file(s).";
-    public static final String RESET_HEAD_AT = "HEAD is now at %s";
     public static final String ERROR_INVALID_COMMIT_REF = "Error: Invalid commit reference: %s";
     public static final String ERROR_NO_COMMITS_YET = "Error: No commits yet on branch %s";
     public static final String ERROR_CANNOT_GO_BACK_INITIAL = "Error: Cannot go back %d commits (reached initial commit)";

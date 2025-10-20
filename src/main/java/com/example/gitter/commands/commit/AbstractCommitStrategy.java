@@ -12,9 +12,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.util.Map;
 
-import static com.example.gitter.constants.Constants.HASH_SHORT_LENGTH;
-import static com.example.gitter.constants.Messages.COMMIT_FILES_CHANGED;
-import static com.example.gitter.constants.Messages.COMMIT_SUCCESS;
 import static com.example.gitter.constants.Messages.ERROR_NOTHING_TO_COMMIT;
 import static com.example.gitter.constants.PathConstants.HEADS;
 
@@ -41,7 +38,6 @@ public abstract class AbstractCommitStrategy implements CommandStrategy<CommitOp
         
         String commitHash = createAndWriteCommit(options, result.getIndexMap());
         Indexing.updateIndex(commitHash);
-        displayResult(options, result, commitHash);
         
         return 0;
     }
@@ -52,12 +48,10 @@ public abstract class AbstractCommitStrategy implements CommandStrategy<CommitOp
     protected static class PrepareResult {
         private final Map<String, FileEntry> indexMap;
         private final boolean hasChanges;
-        private final int changeCount;
         
-        public PrepareResult(Map<String, FileEntry> indexMap, boolean hasChanges, int changeCount) {
+        public PrepareResult(Map<String, FileEntry> indexMap, boolean hasChanges) {
             this.indexMap = indexMap;
             this.hasChanges = hasChanges;
-            this.changeCount = changeCount;
         }
         
         public Map<String, FileEntry> getIndexMap() {
@@ -66,10 +60,6 @@ public abstract class AbstractCommitStrategy implements CommandStrategy<CommitOp
         
         public boolean hasChanges() {
             return hasChanges;
-        }
-        
-        public int getChangeCount() {
-            return changeCount;
         }
     }
     
@@ -83,14 +73,5 @@ public abstract class AbstractCommitStrategy implements CommandStrategy<CommitOp
         Files.writeString(HEADS.resolve(currentBranch), commitHash);
         
         return commitHash;
-    }
-    
-    protected final void displayResult(CommitOptions options, PrepareResult result, String commitHash) 
-            throws IOException {
-        String currentBranch = RepositoryState.getCurrentBranch();
-        String shortHash = commitHash.substring(0, HASH_SHORT_LENGTH);
-        
-        System.out.println(String.format(COMMIT_SUCCESS, currentBranch, shortHash, options.getMessage()));
-        System.out.println(String.format(COMMIT_FILES_CHANGED, result.getChangeCount()));
-    }
+    }    
 }

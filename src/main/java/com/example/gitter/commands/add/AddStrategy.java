@@ -12,8 +12,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import static com.example.gitter.constants.Constants.NEWLINE;
-import static com.example.gitter.constants.Messages.*;
+import static com.example.gitter.constants.Messages.ERROR_PATHSPEC_NO_MATCH;
 
 public class AddStrategy implements CommandStrategy<AddOptions> {
     
@@ -32,7 +31,6 @@ public class AddStrategy implements CommandStrategy<AddOptions> {
         }
         
         Indexing.saveIndex(indexMap.values());
-        System.out.print(ADD_SUCCESS + NEWLINE);
         return 0;
     }
     

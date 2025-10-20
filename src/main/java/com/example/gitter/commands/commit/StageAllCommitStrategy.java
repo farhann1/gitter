@@ -33,13 +33,6 @@ public class StageAllCommitStrategy extends AbstractCommitStrategy {
         boolean hadStagedChanges = status.hasStagedChanges();
         
         boolean hasAnyChanges = autoStagedChanges || hadStagedChanges;
-        
-        int changeCount = status.getStagedNew().size() + 
-                         status.getStagedModified().size() + 
-                         status.getStagedDeleted().size() +
-                         status.getUnstagedModified().size() +
-                         status.getUnstagedDeleted().size();
-        
-        return new PrepareResult(indexMap, hasAnyChanges, changeCount);
+        return new PrepareResult(indexMap, hasAnyChanges);
     }
 }

@@ -10,30 +10,36 @@ import java.util.concurrent.Callable;
 import static com.example.gitter.constants.Messages.*;
 
 @Command(name = "commit",
-         synopsisHeading = "%nUSAGE%n",
+         synopsisHeading = "",
          customSynopsis = {
-             "  gitter commit [-a] -m <msg>"
-         },
-         descriptionHeading = "%nDESCRIPTION%n",
-         description = {
-             "  Record changes to the repository.",
+             "NAME:",
+             "  commit - Records changes to the repository",
              "",
-             "  Creates a snapshot of the staged changes with the given log message.",
-             "  The message should describe what changes are being made and why."
+             "SYNOPSIS:",
+             "  gitter commit -m <msg> [-a]",
+             ""
          },
-         optionListHeading = "%nOPTIONS%n",
+         descriptionHeading = "DESCRIPTION:%n",
+         description = {
+             "  Records changes to the repository",
+             "",
+             "  Creates a snapshot of staged changes with the provided commit message.",
+             "  Each commit represents a point in the project history.",
+             ""
+         },
+         optionListHeading = "OPTIONS:%n",
          sortOptions = false
 )
 public class CommitCommand implements Callable<Integer> {
     
     @Option(names = {"-m"}, 
-            description = "Use the given <msg> as the commit message. Multiple -m options create separate paragraphs.",
+            description = "Commit message (can be specified multiple times)",
             paramLabel = "<msg>",
             required = true)
     private String[] messages;
     
     @Option(names = {"-a"},
-            description = "Automatically stage modified and deleted files before committing (does not add new files)")
+            description = "Automatically stage modified and deleted files (excludes new files)")
     private boolean stageAll = false;
     
     @Override

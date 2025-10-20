@@ -25,9 +25,10 @@ public class OutputFormatter {
      */
     public static void showDeletedFileDiff(String relativePath, String indexHash) throws IOException {
         String indexContent = ObjectStore.readBlob(indexHash).getDataAsString();
-        System.out.println(COLOR_BOLD + String.format(DIFF_HEADER, relativePath, relativePath) + COLOR_RESET);
-        System.out.println(COLOR_RED + DIFF_DELETED_FILE + COLOR_RESET);
+        System.out.println(String.format(DIFF_HEADER_A, relativePath));
+        System.out.println(String.format(DIFF_HEADER_B, relativePath));
         showDiff(indexContent, EMPTY_STRING);
+        System.out.println();
     }
     
     /**
@@ -45,26 +46,27 @@ public class OutputFormatter {
                     .diff(RawTextComparator.DEFAULT, oldText, newText);
             
             for (Edit edit : edits) {
-                // Calculate hunk boundaries with context
                 int hunkStartA = Math.max(0, edit.getBeginA() - DIFF_CONTEXT_LINES);
                 int hunkEndA = Math.min(oldText.size(), edit.getEndA() + DIFF_CONTEXT_LINES);
                 int hunkStartB = Math.max(0, edit.getBeginB() - DIFF_CONTEXT_LINES);
                 int hunkEndB = Math.min(newText.size(), edit.getEndB() + DIFF_CONTEXT_LINES);
                 
-                int contextBefore = edit.getBeginA() - hunkStartA;
-                int contextAfter = hunkEndA - edit.getEndA();
+                int contextBeforeA = edit.getBeginA() - hunkStartA;
+                int contextAfterA = hunkEndA - edit.getEndA();
+                int contextBeforeB = edit.getBeginB() - hunkStartB;
+                int contextAfterB = hunkEndB - edit.getEndB();
                 
                 // Print hunk header with actual line numbers and counts
-                int oldCount = contextBefore + (edit.getEndA() - edit.getBeginA()) + contextAfter;
-                int newCount = contextBefore + (edit.getEndB() - edit.getBeginB()) + contextAfter;
+                int oldCount = contextBeforeA + (edit.getEndA() - edit.getBeginA()) + contextAfterA;
+                int newCount = contextBeforeB + (edit.getEndB() - edit.getBeginB()) + contextAfterB;
                 
                 System.out.println(COLOR_CYAN + String.format(DIFF_HUNK_HEADER,
                                  hunkStartA + 1, oldCount,
                                  hunkStartB + 1, newCount) + COLOR_RESET);
                 
-                // Print context before the change
-                for (int i = hunkStartA; i < edit.getBeginA(); i++) {
-                    System.out.println(DIFF_CONTEXT_PREFIX + oldText.getString(i));
+                // Print context before the change (from new text for consistency)
+                for (int i = hunkStartB; i < edit.getBeginB(); i++) {
+                    System.out.println(DIFF_CONTEXT_PREFIX + newText.getString(i));
                 }
                 
                 // Print deletions
@@ -77,9 +79,9 @@ public class OutputFormatter {
                     System.out.println(COLOR_GREEN + DIFF_ADDITION_PREFIX + newText.getString(i) + COLOR_RESET);
                 }
                 
-                // Print context after the change
-                for (int i = edit.getEndA(); i < hunkEndA; i++) {
-                    System.out.println(DIFF_CONTEXT_PREFIX + oldText.getString(i));
+                // Print context after the change (from new text for consistency)
+                for (int i = edit.getEndB(); i < hunkEndB; i++) {
+                    System.out.println(DIFF_CONTEXT_PREFIX + newText.getString(i));
                 }
             }
             

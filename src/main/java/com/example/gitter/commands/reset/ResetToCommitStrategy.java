@@ -9,7 +9,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import static com.example.gitter.constants.Constants.*;
-import static com.example.gitter.constants.Messages.*;
+import static com.example.gitter.constants.Messages.ERROR_NO_COMMITS_YET;
+import static com.example.gitter.constants.Messages.ERROR_INVALID_COMMIT_REF;
+import static com.example.gitter.constants.Messages.ERROR_CANNOT_GO_BACK_INITIAL;
 import static com.example.gitter.constants.PathConstants.HEADS;
 
 public class ResetToCommitStrategy implements CommandStrategy<ResetOptions> {
@@ -28,7 +30,6 @@ public class ResetToCommitStrategy implements CommandStrategy<ResetOptions> {
         Files.writeString(branchFile, targetCommitHash + NEWLINE);
         
         Indexing.updateIndex(targetCommitHash);
-        System.out.printf(RESET_HEAD_AT + NEWLINE, targetCommitHash.substring(0, HASH_SHORT_LENGTH));
         
         return 0;
     }

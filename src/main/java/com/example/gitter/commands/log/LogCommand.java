@@ -9,19 +9,25 @@ import java.util.concurrent.Callable;
 import static com.example.gitter.constants.Messages.*;
 
 @Command(name = "log",
-         synopsisHeading = "%nUSAGE%n",
+         synopsisHeading = "",
          customSynopsis = {
-             "  gitter log"
+             "NAME:",
+             "  log - Shows commit history in reverse chronological order (newest first)",
+             "",
+             "SYNOPSIS:",
+             "  gitter log",
+             ""
          },
-         descriptionHeading = "%nDESCRIPTION%n",
+         descriptionHeading = "DESCRIPTION:%n",
          description = {
-             "  Shows commit history in reverse chronological order (newest first).",
+             "  Shows commit history in reverse chronological order (newest first)",
              "",
              "  Displays up to 10 commits, with output format:",
              "    - Commit hash (40-character SHA-1)",
              "    - Author information",
              "    - Commit date and time",
-             "    - Commit message"
+             "    - Commit message",
+             ""
          }
 )
 public class LogCommand implements Callable<Integer> {

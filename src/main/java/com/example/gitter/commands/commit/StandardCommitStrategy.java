@@ -24,7 +24,6 @@ public class StandardCommitStrategy extends AbstractCommitStrategy {
     @Override
     protected PrepareResult prepareIndex(CommitOptions options, WorkingDirectoryStatus status) throws IOException {
         Map<String, FileEntry> indexMap = Indexing.loadIndex();
-        int changeCount = status.getStagedNew().size() + status.getStagedModified().size() + status.getStagedDeleted().size();
-        return new PrepareResult(indexMap, true, changeCount);
+        return new PrepareResult(indexMap, true);
     }
 }

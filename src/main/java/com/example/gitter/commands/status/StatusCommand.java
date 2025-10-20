@@ -9,18 +9,24 @@ import java.util.concurrent.Callable;
 import static com.example.gitter.constants.Messages.*;
 
 @Command(name = "status",
-         synopsisHeading = "%nUSAGE%n",
+         synopsisHeading = "",
          customSynopsis = {
-             "  gitter status"
+             "NAME:",
+             "  status - Shows the working tree status",
+             "",
+             "SYNOPSIS:",
+             "  gitter status",
+             ""
          },
-         descriptionHeading = "%nDESCRIPTION%n",
+         descriptionHeading = "DESCRIPTION:%n",
          description = {
-             "  Shows the working tree status.",
+             "  Shows the working tree status",
              "",
              "  Displays changes in three categories:",
              "    • Changes staged for commit",
              "    • Changes not staged for commit",
-             "    • Untracked files"
+             "    • Untracked files",
+             ""
          }
 )
 public class StatusCommand implements Callable<Integer> {

@@ -148,30 +148,16 @@ public class Indexing {
      * @param filePaths Set of file paths to remove from index
      * @throws IOException if file operations fail
      */
-    public static int unstageFiles(Set<String> filePaths) throws IOException {
+    public static void unstageFiles(Set<String> filePaths) throws IOException {
         if (filePaths.isEmpty()) {
-            return 0;
+            return;
         }
         
         Map<String, FileEntry> indexMap = loadIndex();
-        Map<String, FileEntry> committedFiles = RepositoryState.getCommittedFiles();
-        int unstagedCount = 0;
-        
         for (String file : filePaths) {
-            FileEntry indexEntry = indexMap.get(file);
-            FileEntry committedEntry = committedFiles.get(file);
-            
-            if (indexEntry != null) {
-                boolean hadStagedChanges = committedEntry == null || 
-                                          !indexEntry.getHash().equals(committedEntry.getHash());
-                if (hadStagedChanges) {
-                    unstagedCount++;
-                }
-                indexMap.remove(file);
-            }
+            indexMap.remove(file);
         }
         
         saveIndex(indexMap.values());
-        return unstagedCount;
     }
 }

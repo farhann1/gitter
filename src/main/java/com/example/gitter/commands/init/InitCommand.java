@@ -8,22 +8,22 @@ import java.util.concurrent.Callable;
 import static com.example.gitter.constants.Messages.ERROR_INIT_EXCEPTION;
 
 @Command(name = "init",
-         synopsisHeading = "%nUSAGE%n",
+         synopsisHeading = "",
          customSynopsis = {
-             "  gitter init"
+             "NAME:",
+             "  init - Creates an empty Gitter repository",
+             "",
+             "SYNOPSIS:",
+             "  gitter init",
+             ""
          },
-         descriptionHeading = "%nDESCRIPTION%n",
+         descriptionHeading = "DESCRIPTION:%n",
          description = {
-             "  Creates an empty Gitter repository in current directory",
+             "  Creates an empty Gitter repository",
              "",
-             "  The .gitter directory contains:",
-             "  - objects/: Unified storage for all version-controlled content",
-             "  - refs/heads/: Branch pointers",
-             "  - HEAD: Current branch reference",
-             "  - index: Staging area",
-             "",
-             "  Running gitter init in an existing repository is safe. It will not",
-             "  overwrite things that are already there."
+             "  Initializes a new Gitter repository by creating a .gitter directory structure",
+             "  with subdirectories for objects, refs, and files for HEAD and index.",
+             ""
          }
 )
 public class InitCommand implements Callable<Integer> {

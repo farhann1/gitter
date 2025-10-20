@@ -12,24 +12,30 @@ import java.util.concurrent.Callable;
 import static com.example.gitter.constants.Messages.*;
 
 @Command(name = "reset",
-         synopsisHeading = "%nUSAGE%n",
+         synopsisHeading = "",
          customSynopsis = {
-             "  gitter reset [<commit|file>...]"
-         },
-         descriptionHeading = "%nDESCRIPTION%n",
-         description = {
-             "  Reset HEAD to a specific commit or unstage files.",
+             "NAME:",
+             "  reset - Reset to a specific commit or unstage files",
              "",
-             "  With <commit>: Moves HEAD to the commit, unstages all changes.",
-             "  With <pathspec>: Removes files from the staging area.",
+             "SYNOPSIS:",
+             "  gitter reset [<commit|file>...]",
+             ""
+         },
+         descriptionHeading = "DESCRIPTION:%n",
+         description = {
+             "  Reset to a specific commit or unstage files",
+             "",
+             "  Resets the current branch HEAD to a specified commit and clears the staging",
+             "  area (working tree unchanged), or removes specified files from the staging area.",
              "",
              "  Examples:",
              "    gitter reset HEAD~1      # Undo last commit",
              "    gitter reset HEAD~2      # Undo last 2 commits",
              "    gitter reset file.txt    # Unstage specific file",
-             "    gitter reset '*.txt'     # Unstage pattern (use quote)"
+             "    gitter reset '*.txt'     # Unstage using file pattern (use quote)",
+             ""
          },
-         parameterListHeading = "%nARGUMENTS%n"
+         parameterListHeading = "ARGUMENTS:%n"
 )
 public class ResetCommand implements Callable<Integer> {
     

@@ -13,21 +13,19 @@ import picocli.CommandLine.Command;
 
 @Command(
     name = "gitter",
-    description = {
-        "",
-        "A lightweight version control system for tracking changes in source code.",
-        ""
-    },
+    synopsisHeading = "",
+    customSynopsis = {" "},
+    commandListHeading = "These are common Gitter commands:%n%n",
     version = "Gitter version 1.0.0",
     subcommands = {
         InitCommand.class,
-        CheckoutCommand.class,
         AddCommand.class,
-        StatusCommand.class,
         CommitCommand.class,
+        StatusCommand.class,
         LogCommand.class,
-        ResetCommand.class,
         DiffCommand.class,
+        ResetCommand.class,
+        CheckoutCommand.class,
         CommandLine.HelpCommand.class
     }
 )
@@ -45,7 +43,6 @@ public class App implements Runnable {
 
     @Override
     public void run() {
-        // Show help when no command is specified
         spec.commandLine().usage(System.out);
     }
 }

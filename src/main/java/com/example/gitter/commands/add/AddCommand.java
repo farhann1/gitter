@@ -11,23 +11,24 @@ import java.util.concurrent.Callable;
 import static com.example.gitter.constants.Messages.*;
 
 @Command(name = "add",
-         synopsisHeading = "%nUSAGE%n",
+         synopsisHeading = "",
          customSynopsis = {
-             "  gitter add <pathspec>..."
+             "NAME:",
+             "  add - Stage content for the next commit",
+             "",
+             "SYNOPSIS:",
+             "  gitter add <pathspec>...",
+             ""
          },
-         descriptionHeading = "%nDESCRIPTION%n",
+         descriptionHeading = "DESCRIPTION:%n",
          description = {
-             "  Stage content for the next commit.",
+             "  Stage content for the next commit",
              "",
-             "  Supports:",
-             "    • Multiple file names:  gitter add file1.txt file2.txt",
-             "    • Directory paths:      gitter add src/",
-             "    • Wildcards:            gitter add '*.java' (use quote)",
-             "    • Current directory:    gitter add .",
-             "",
-             "  Can be run multiple times to stage additional changes before committing."
+             "  Adds file changes to the staging area, preparing them to be included in",
+             "  the next commit. Can be run multiple times to incrementally stage changes.",
+             ""
          },
-         parameterListHeading = "%nARGUMENTS%n"
+         parameterListHeading = "ARGUMENTS:%n"
 )
 public class AddCommand implements Callable<Integer> {
     
