@@ -26,7 +26,7 @@ public class StandardCheckoutStrategy extends AbstractCheckoutStrategy {
             return false;
         }
         
-        return canSwitch();
+        return true;
     }
     
     @Override

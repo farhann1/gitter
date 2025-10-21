@@ -14,6 +14,10 @@ public abstract class AbstractCheckoutStrategy implements CommandStrategy<Checko
     
     @Override
     public final Integer execute(CheckoutOptions options) throws IOException {
+        if (!canSwitch()) {
+            return 1;
+        }
+
         Path branchFile = HEADS.resolve(options.getBranch());
         
         if (!validateCheckout(options, branchFile)) {

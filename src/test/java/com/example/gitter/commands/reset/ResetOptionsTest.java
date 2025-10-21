@@ -53,14 +53,14 @@ class ResetOptionsTest {
     }
 
     @Test
-    void testGetStrategyWithEmptyArgsReturnsResetToCommitStrategy() {
+    void testGetStrategyWithEmptyArgsReturnsUnstageFilesStrategy() {
         ResetOptions options = ResetOptions.builder()
                 .args(List.of())
                 .build();
 
         CommandStrategy<ResetOptions> strategy = options.getStrategy();
         assertNotNull(strategy);
-        assertInstanceOf(ResetToCommitStrategy.class, strategy);
+        assertInstanceOf(UnstageFilesStrategy.class, strategy);
     }
 
     @Test

@@ -38,7 +38,7 @@ public class Messages {
     public static final String STATUS_UNTRACKED_FILES = "\nUntracked files:";
     
     // Status hints
-    public static final String HINT_RESET_TO_UNSTAGE = "  (use \"gitter reset\" to unstage)";
+    public static final String HINT_RESET_TO_UNSTAGE = "  (use \"gitter reset <file>...\" to unstage)";
     public static final String HINT_ADD_FILES = "  (use \"gitter add <file>...\" to stage)";
     
     // Status file prefixes
@@ -72,7 +72,7 @@ public class Messages {
     public static final String ERROR_FAILED_TO_ADD = "Error: Failed to add files - ";
     public static final String ERROR_FILE_PATTERN_REQUIRED = "At least one file pattern is required";
     
-    public static final String ERROR_NOTHING_TO_COMMIT = "Error: Nothing to commit. Use 'gitter add' to stage files.";
+    public static final String ERROR_NOTHING_TO_COMMIT = "Error: Nothing to commit. Use 'gitter add <file>...' to stage files.";
     public static final String ERROR_FAILED_TO_COMMIT = "Error: Failed to create commit - ";
     public static final String ERROR_COMMIT_MESSAGE_REQUIRED = "Error: Commit message is required";
 

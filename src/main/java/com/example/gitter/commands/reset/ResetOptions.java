@@ -38,10 +38,6 @@ public class ResetOptions {
             return new ResetToCommitStrategy();
         }
         
-        if (args.isEmpty()) {
-            return new ResetToCommitStrategy();
-        }
-        
         return new UnstageFilesStrategy();
     }
     

@@ -60,6 +60,7 @@ public class OutputFormatter {
                 int oldCount = contextBeforeA + (edit.getEndA() - edit.getBeginA()) + contextAfterA;
                 int newCount = contextBeforeB + (edit.getEndB() - edit.getBeginB()) + contextAfterB;
                 
+                System.out.println();
                 System.out.println(COLOR_CYAN + String.format(DIFF_HUNK_HEADER,
                                  hunkStartA + 1, oldCount,
                                  hunkStartB + 1, newCount) + COLOR_RESET);

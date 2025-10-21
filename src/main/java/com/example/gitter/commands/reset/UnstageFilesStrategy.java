@@ -28,6 +28,11 @@ public class UnstageFilesStrategy implements CommandStrategy<ResetOptions> {
     
     private Set<String> findFilesToUnstage(ResetOptions options) throws IOException {
         Map<String, FileEntry> indexMap = Indexing.loadIndex();
+        
+        if (options.isEmpty()) {
+            return indexMap.keySet();
+        }
+        
         Map<String, String> allWorkingFiles = RepositoryState.getWorkingFiles();
         Set<String> filesToUnstage = new HashSet<>();
         
