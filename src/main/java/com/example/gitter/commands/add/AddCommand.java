@@ -14,10 +14,10 @@ import static com.example.gitter.constants.Messages.*;
          synopsisHeading = "",
          customSynopsis = {
              "NAME:",
-             "  add - Stage content for the next commit",
+             "add - Stage content for the next commit",
              "",
              "SYNOPSIS:",
-             "  gitter add <pathspec>...",
+             "gitter add <pathspec>...",
              ""
          },
          descriptionHeading = "DESCRIPTION:%n",

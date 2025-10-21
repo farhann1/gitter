@@ -14,10 +14,10 @@ import static com.example.gitter.constants.Messages.*;
          synopsisHeading = "",
          customSynopsis = {
              "NAME:",
-             "  checkout - Switch branch and restore working tree to match it",
+             "checkout - Switch branch and restore working tree to match it",
              "",
              "SYNOPSIS:",
-             "  gitter checkout [-b] <branch>",
+             "gitter checkout [-b] <branch>",
              ""
          },
          descriptionHeading = "DESCRIPTION:%n",

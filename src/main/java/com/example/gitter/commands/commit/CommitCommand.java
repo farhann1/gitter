@@ -13,10 +13,10 @@ import static com.example.gitter.constants.Messages.*;
          synopsisHeading = "",
          customSynopsis = {
              "NAME:",
-             "  commit - Record changes to the repository",
+             "commit - Record changes to the repository",
              "",
              "SYNOPSIS:",
-             "  gitter commit -m <msg> [-a]",
+             "gitter commit -m <msg> [-a]",
              ""
          },
          descriptionHeading = "DESCRIPTION:%n",

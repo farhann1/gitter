@@ -12,10 +12,10 @@ import static com.example.gitter.constants.Messages.*;
          synopsisHeading = "",
          customSynopsis = {
              "NAME:",
-             "  diff - Show changes between the working tree and the index",
+             "diff - Show changes between the working tree and the index",
              "",
              "SYNOPSIS:",
-             "  gitter diff",
+             "gitter diff",
              ""
          },
          descriptionHeading = "DESCRIPTION:%n",

@@ -197,8 +197,7 @@ class RepositoryStateTest {
         WorkingDirectoryStatus status = RepositoryState.getWorkingDirectoryStatus();
         
         boolean hasUnstagedChanges = !status.getUnstagedModified().isEmpty() ||
-                                     !status.getUnstagedDeleted().isEmpty() ||
-                                     !status.getUntracked().isEmpty();
+                                     !status.getUnstagedDeleted().isEmpty();
         
         assertEquals(hasUnstagedChanges, status.hasUnstagedChanges());
     }

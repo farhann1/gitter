@@ -12,10 +12,10 @@ import static com.example.gitter.constants.Messages.*;
          synopsisHeading = "",
          customSynopsis = {
              "NAME:",
-             "  status - Show the working tree status",
+             "status - Show the working tree status",
              "",
              "SYNOPSIS:",
-             "  gitter status",
+             "gitter status",
              ""
          },
          descriptionHeading = "DESCRIPTION:%n",

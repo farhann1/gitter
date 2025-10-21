@@ -12,10 +12,10 @@ import static com.example.gitter.constants.Messages.*;
          synopsisHeading = "",
          customSynopsis = {
              "NAME:",
-             "  log - Show commit history in reverse chronological order (newest first)",
+             "log - Show commit history in reverse chronological order (newest first)",
              "",
              "SYNOPSIS:",
-             "  gitter log",
+             "gitter log",
              ""
          },
          descriptionHeading = "DESCRIPTION:%n",

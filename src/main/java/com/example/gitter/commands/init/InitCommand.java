@@ -11,10 +11,10 @@ import static com.example.gitter.constants.Messages.ERROR_INIT_EXCEPTION;
          synopsisHeading = "",
          customSynopsis = {
              "NAME:",
-             "  init - Create an empty Gitter repository",
+             "init - Create an empty Gitter repository",
              "",
              "SYNOPSIS:",
-             "  gitter init",
+             "gitter init",
              ""
          },
          descriptionHeading = "DESCRIPTION:%n",

@@ -15,10 +15,10 @@ import static com.example.gitter.constants.Messages.*;
          synopsisHeading = "",
          customSynopsis = {
              "NAME:",
-             "  reset - Reset to a specific commit or unstage files",
+             "reset - Reset to a specific commit or unstage files",
              "",
              "SYNOPSIS:",
-             "  gitter reset [<commit|file>...]",
+             "gitter reset [<commit|file>...]",
              ""
          },
          descriptionHeading = "DESCRIPTION:%n",
