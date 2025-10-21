@@ -22,10 +22,10 @@ import static com.example.gitter.constants.Messages.*;
          },
          descriptionHeading = "DESCRIPTION:%n",
          description = {
-             "  Stage content for the next commit",
+             "Stage content for the next commit",
              "",
-             "  Adds file changes to the staging area, preparing them to be included in",
-             "  the next commit. Can be run multiple times to incrementally stage changes.",
+             "Adds file changes to the staging area, preparing them to be included",
+             "in the next commit. Can be run multiple times to incrementally stage changes.",
              ""
          },
          parameterListHeading = "ARGUMENTS:%n"

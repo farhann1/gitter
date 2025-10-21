@@ -12,7 +12,7 @@ import static com.example.gitter.constants.Messages.*;
          synopsisHeading = "",
          customSynopsis = {
              "NAME:",
-             "  status - Shows the working tree status",
+             "  status - Show the working tree status",
              "",
              "SYNOPSIS:",
              "  gitter status",
@@ -20,12 +20,10 @@ import static com.example.gitter.constants.Messages.*;
          },
          descriptionHeading = "DESCRIPTION:%n",
          description = {
-             "  Shows the working tree status",
+             "Show the working tree status",
              "",
-             "  Displays changes in three categories:",
-             "    • Changes staged for commit",
-             "    • Changes not staged for commit",
-             "    • Untracked files",
+             "Displays changes in three categories - changes staged for commit,",
+             "changes not staged for commit, and untracked files.",
              ""
          }
 )

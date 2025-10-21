@@ -12,7 +12,7 @@ import static com.example.gitter.constants.Messages.*;
          synopsisHeading = "",
          customSynopsis = {
              "NAME:",
-             "  diff - Shows changes between the working tree and the index",
+             "  diff - Show changes between the working tree and the index",
              "",
              "SYNOPSIS:",
              "  gitter diff",
@@ -20,10 +20,10 @@ import static com.example.gitter.constants.Messages.*;
          },
          descriptionHeading = "DESCRIPTION:%n",
          description = {
-             "  Shows changes between the working tree and the index",
+             "Show changes between the working tree and the index",
              "",
-             "  Shows unstaged changes for all modified files in unified diff format.",
-             "  Compares the working tree version against what's staged in the index.",
+             "Shows unstaged changes for all modified files in unified diff format.",
+             "Compares the working tree version against what's staged in the index.",
              ""
          }
 )

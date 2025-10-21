@@ -12,7 +12,7 @@ import static com.example.gitter.constants.Messages.*;
          synopsisHeading = "",
          customSynopsis = {
              "NAME:",
-             "  log - Shows commit history in reverse chronological order (newest first)",
+             "  log - Show commit history in reverse chronological order (newest first)",
              "",
              "SYNOPSIS:",
              "  gitter log",
@@ -20,13 +20,10 @@ import static com.example.gitter.constants.Messages.*;
          },
          descriptionHeading = "DESCRIPTION:%n",
          description = {
-             "  Shows commit history in reverse chronological order (newest first)",
+             "Show commit history in reverse chronological order (newest first)",
              "",
-             "  Displays up to 10 commits, with output format:",
-             "    - Commit hash (40-character SHA-1)",
-             "    - Author information",
-             "    - Commit date and time",
-             "    - Commit message",
+             "Displays up to 10 commits, showing commit hash (40-character SHA-1),",
+             "author information, commit date and time, and commit message.",
              ""
          }
 )

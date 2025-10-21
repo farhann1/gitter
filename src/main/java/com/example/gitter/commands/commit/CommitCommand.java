@@ -13,7 +13,7 @@ import static com.example.gitter.constants.Messages.*;
          synopsisHeading = "",
          customSynopsis = {
              "NAME:",
-             "  commit - Records changes to the repository",
+             "  commit - Record changes to the repository",
              "",
              "SYNOPSIS:",
              "  gitter commit -m <msg> [-a]",
@@ -21,10 +21,10 @@ import static com.example.gitter.constants.Messages.*;
          },
          descriptionHeading = "DESCRIPTION:%n",
          description = {
-             "  Records changes to the repository",
+             "Record changes to the repository",
              "",
-             "  Creates a snapshot of staged changes with the provided commit message.",
-             "  Each commit represents a point in the project history.",
+             "Creates a snapshot of staged changes with the provided commit message.",
+             "Each commit represents a point in the project history.",
              ""
          },
          optionListHeading = "OPTIONS:%n",

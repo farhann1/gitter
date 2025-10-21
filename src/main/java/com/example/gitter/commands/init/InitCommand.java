@@ -11,7 +11,7 @@ import static com.example.gitter.constants.Messages.ERROR_INIT_EXCEPTION;
          synopsisHeading = "",
          customSynopsis = {
              "NAME:",
-             "  init - Creates an empty Gitter repository",
+             "  init - Create an empty Gitter repository",
              "",
              "SYNOPSIS:",
              "  gitter init",
@@ -19,10 +19,10 @@ import static com.example.gitter.constants.Messages.ERROR_INIT_EXCEPTION;
          },
          descriptionHeading = "DESCRIPTION:%n",
          description = {
-             "  Creates an empty Gitter repository",
+             "Create an empty Gitter repository",
              "",
-             "  Initializes a new Gitter repository by creating a .gitter directory structure",
-             "  with subdirectories for objects, refs, and files for HEAD and index.",
+             "Initializes a new Gitter repository by creating a .gitter directory",
+             "structure with subdirectories for objects, refs, and files for HEAD and index.",
              ""
          }
 )

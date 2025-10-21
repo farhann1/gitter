@@ -22,10 +22,10 @@ import static com.example.gitter.constants.Messages.*;
          },
          descriptionHeading = "DESCRIPTION:%n",
          description = {
-             "  Switch branch and restore working tree to match it",
+             "Switch branch and restore working tree to match it",
              "",
-             "  Switches to the specified branch and updates all files in the working tree",
-             "  to match that branch. Requires a clean working directory to prevent data loss.",
+             "Switches to the specified branch and updates all files in the working",
+             "tree to match that branch. Requires a clean working directory to prevent data loss.",
              ""
          },
          optionListHeading = "OPTIONS:%n",
