@@ -1,80 +1,81 @@
-# Gitter - A Git-like Version Control System
+# Gitter
 
-A lightweight version control system implementation inspired by Git, built in Java. Gitter supports core Git functionality including commits, branches, staging, and more.
+A lightweight version control system built in Java. Track changes, manage branches, and maintain project history with a simple command-line interface. Initialize it in any directory to start versioning your files.
 
 ## Features
 
-- ✅ **Repository Management**: Initialize repositories with `.gitter` directory
-- ✅ **Staging Area**: Add files with glob patterns, directories, and exact paths
-- ✅ **Commits**: Create commits with messages, auto-stage changes
-- ✅ **Branching**: Create and switch between branches
-- ✅ **Status Tracking**: View staged, unstaged, and untracked files
-- ✅ **Diff Viewer**: Unified diff format with color coding
-- ✅ **History**: View commit logs
-- ✅ **Reset**: Undo commits or unstage files
-- ✅ **Staged Deletions**: Track and stage deleted files
+- **Repository Management** - Initialize version control in any directory
+- **Staging Area** - Select which changes to include in the next commit
+- **Commits** - Create snapshots of your project with descriptive messages
+- **Branching** - Work on multiple features independently
+- **Status Tracking** - See what's changed, staged, or untracked
+- **Diff Viewer** - View file differences with syntax highlighting
+- **History** - Browse through past commits
+- **Reset** - Undo commits or unstage files
 
-## Architecture
+## Quick Start
 
-Gitter uses Git's proven architecture:
-- **Content-addressable storage** with SHA-1 hashing
-- **Object sharding** for efficient storage (objects/ab/cdef123...)
-- **Unified object format** for blobs and commits
-- **Index-based staging area**
-
-## Prerequisites
-
-- Java 17 or higher
-- Maven 3.8 or higher
-
-## Building
+**Prerequisites:** Java 17+, Maven 3.8+
 
 ```bash
-# Clone or navigate to the repository
-cd gitter
-
 # Build the project
 mvn clean package
-
-# The executable JAR will be created at: target/gitter.jar
 ```
 
-## Installation
+This creates `target/gitter.jar` - your version control system is ready!
 
-### Option 1: Using the wrapper script (Unix/Mac)
+## Setup
 
-```bash
-# Make the wrapper executable
-chmod +x gitter
-
-# Use it directly
-./gitter init
-./gitter add file.txt
-./gitter commit -m "Initial commit"
-```
-
-### Option 2: Direct JAR execution
-
-```bash
-java -jar target/gitter.jar init
-java -jar target/gitter.jar add file.txt
-java -jar target/gitter.jar commit -m "Initial commit"
-```
-
-### Option 3: Create an alias
+Make Gitter available system-wide so you can use it in any directory:
 
 ```bash
 # Add to your ~/.bashrc or ~/.zshrc
-alias gitter='java -jar /path/to/gitter/target/gitter.jar'
+export PATH="$PATH:/path/to/gitter"
+
+# Make the wrapper executable
+chmod +x /path/to/gitter/gitter
+
+# Reload your shell
+source ~/.bashrc  # or source ~/.zshrc
+
+# Now use gitter anywhere
+cd ~/my-project
+gitter init
 ```
 
-## Usage
+## Usage Guide
+
+### Basic Workflow
+
+```bash
+# 1. Initialize a repository
+gitter init
+
+# 2. Make changes to your files
+echo "Hello World" > file.txt
+
+# 3. Stage files for commit
+gitter add file.txt
+
+# 4. Check what's staged
+gitter status
+
+# 5. Commit your changes
+gitter commit -m "Add hello world file"
+
+# 6. View commit history
+gitter log
+```
 
 ### Initialize a Repository
 
 ```bash
 gitter init
 ```
+
+Creates a `.gitter` directory to store version control data.
+
+**Note:** All gitter commands work from any subdirectory within your project. Paths are automatically normalized relative to the repository root, so you can run commands from anywhere inside your project.
 
 ### Stage Files
 
@@ -100,16 +101,18 @@ rm file.txt
 gitter add file.txt
 ```
 
+**Ignoring Files:** Create a `.gitterignore` file in your repository root to exclude files from version control. List exact file names or directory paths, one per line (e.g., `target/`, `node_modules/`, `.DS_Store`).
+
 ### Commit Changes
 
 ```bash
 # Commit with a message
 gitter commit -m "Add new feature"
 
-# Commit with multiple message paragraphs
+# Commit with multiple message lines
 gitter commit -m "Title" -m "Description paragraph 1" -m "Paragraph 2"
 
-# Auto-stage modified and deleted tracked files
+# Auto-stage modified and deleted tracked files (excludes new files)
 gitter commit -a -m "Quick commit"
 ```
 
@@ -119,22 +122,23 @@ gitter commit -a -m "Quick commit"
 gitter status
 ```
 
-Output shows:
-- **Changes to be committed**: Staged files (new, modified, deleted)
-- **Changes not staged for commit**: Modified or deleted files
-- **Untracked files**: Files not in version control
+Shows three categories:
+- **Changes to be committed** - Staged files (new, modified, deleted)
+- **Changes not staged for commit** - Modified or deleted files
+- **Untracked files** - Files not in version control
+
+Empty categories are hidden.
 
 ### View Differences
 
 ```bash
-# Show diff for a specific file
-gitter diff file.txt
+gitter diff
 ```
 
-Output uses unified diff format with color coding:
-- Red lines: deletions
-- Green lines: additions
-- Cyan lines: hunk headers
+Shows unstaged changes for all modified and deleted files in unified diff format:
+- **Red lines**: Deletions
+- **Green lines**: Additions
+- **Cyan lines**: Hunk headers with line numbers
 
 ### View History
 
@@ -143,12 +147,12 @@ gitter log
 ```
 
 Shows up to 10 most recent commits with:
-- Commit hash
+- Commit hash (40-character SHA-1)
 - Author information
 - Date and time
 - Commit message
 
-### Branching
+### Work with Branches
 
 ```bash
 # Create and switch to a new branch
@@ -156,23 +160,23 @@ gitter checkout -b feature-branch
 
 # Switch to an existing branch
 gitter checkout main
-
-# Note: Switching branches requires a clean working tree
 ```
+
+**Note:** Requires a clean working tree (no uncommitted changes).
 
 ### Reset Changes
 
 ```bash
-# Unstage a file
+# Unstage a specific file
 gitter reset file.txt
 
-# Unstage multiple files with patterns
+# Unstage with patterns
 gitter reset *.java
 
-# Reset all staged changes to HEAD
+# Unstage all files
 gitter reset
 
-# Undo last commit (keep changes)
+# Undo last commit (keeps changes in working directory)
 gitter reset HEAD~1
 
 # Undo last 2 commits
@@ -186,109 +190,93 @@ gitter reset HEAD~2
 | `gitter init` | Initialize a new repository |
 | `gitter add <pathspec>...` | Stage files for commit |
 | `gitter commit -m <msg>` | Create a new commit |
-| `gitter commit -a -m <msg>` | Auto-stage and commit |
+| `gitter commit -a -m <msg>` | Auto-stage and commit tracked files |
 | `gitter status` | Show working tree status |
-| `gitter diff <file>` | Show changes for a file |
+| `gitter diff` | Show unstaged changes |
 | `gitter log` | Show commit history |
-| `gitter reset [<commit>]` | Reset to a commit |
+| `gitter reset [<commit>]` | Reset to a specific commit |
 | `gitter reset [<pathspec>...]` | Unstage files |
 | `gitter checkout [-b] <branch>` | Switch or create branches |
 
-## Testing
+## Implementation & Design
 
-### Run Unit Tests
+### Architecture Overview
 
-```bash
-mvn test
-```
-
-**Test Coverage:**
-- **59 unit tests** across 7 test files
-- Tests for all core models and utilities
-- 100% pass rate
-- Test files:
-  - `CommitTest.java` (8 tests)
-  - `FileEntryTest.java` (6 tests)
-  - `HashUtilsTest.java` (5 tests)
-  - `ObjectStoreTest.java` (6 tests)
-  - `IndexingTest.java` (6 tests)
-  - `FileUtilsTest.java` (15 tests)
-  - `RepositoryStateTest.java` (13 tests)
-
-### Manual Testing
-
-All 8 core commands have been thoroughly tested with various scenarios:
-- Pattern matching (glob patterns, directories, wildcards)
-- Edge cases (deletions, modifications, new files)
-- Multi-file operations
-- Branch operations
-- Commit history
-- Status tracking
-
-## Project Structure
+Gitter follows a layered architecture with clear separation of concerns:
 
 ```
-gitter/
-├── src/
-│   ├── main/java/com/example/gitter/
-│   │   ├── commands/        # Command implementations
-│   │   │   ├── AddCommand.java
-│   │   │   ├── CheckoutCommand.java
-│   │   │   ├── CommitCommand.java
-│   │   │   ├── DiffCommand.java
-│   │   │   ├── InitCommand.java
-│   │   │   ├── LogCommand.java
-│   │   │   ├── ResetCommand.java
-│   │   │   └── StatusCommand.java
-│   │   ├── constants/       # Centralized constants
-│   │   │   ├── Constants.java
-│   │   │   ├── Messages.java
-│   │   │   └── PathConstants.java
-│   │   ├── models/          # Domain models
-│   │   │   ├── Commit.java
-│   │   │   ├── FileEntry.java
-│   │   │   ├── ObjectContent.java
-│   │   │   └── WorkingDirectoryStatus.java
-│   │   ├── utils/           # Utility classes
-│   │   │   ├── FileUtils.java
-│   │   │   ├── HashUtils.java
-│   │   │   ├── Indexing.java
-│   │   │   ├── ObjectStore.java
-│   │   │   ├── OutputFormatter.java
-│   │   │   └── RepositoryState.java
-│   │   └── Main.java        # Application entry point
-│   └── test/java/com/example/gitter/
-│       ├── models/          # Model tests
-│       │   ├── CommitTest.java
-│       │   └── FileEntryTest.java
-│       └── utils/           # Utility tests
-│           ├── FileUtilsTest.java
-│           ├── HashUtilsTest.java
-│           ├── IndexingTest.java
-│           ├── ObjectStoreTest.java
-│           └── RepositoryStateTest.java
-├── gitter                   # Wrapper script
-├── pom.xml                  # Maven configuration
-└── README.md                # This file
+┌─────────────────────────────────────┐
+│     Commands (CLI Interface)        │  ← Picocli framework
+├─────────────────────────────────────┤
+│  Options → Strategy (Pattern)       │  ← Command execution logic
+├─────────────────────────────────────┤
+│  Utils (Core functionality)         │  ← Object storage, indexing, etc.
+├─────────────────────────────────────┤
+│  Models (Domain objects)            │  ← Commit, FileEntry, etc.
+└─────────────────────────────────────┘
 ```
 
-## Implementation Details
+### Design Patterns
 
-### Object Storage
+**1. Strategy Pattern**
+- Each command has multiple strategies (e.g., `StandardCommitStrategy`, `StageAllCommitStrategy`)
+- Allows different execution paths based on options
+- Makes commands extensible without modifying core logic
 
-Gitter uses Git's content-addressable storage model:
-- Objects are stored as `type size\0content`
-- Files are sharded using first 2 characters of hash: `objects/ab/cdef123...`
-- Supports blobs (file content) and commits
+**2. Builder Pattern**
+- Used for constructing command options objects
+- Provides clean, readable API for option creation
 
-### Staging Area (Index)
+**3. Template Method Pattern**
+- `AbstractCommitStrategy` and `AbstractCheckoutStrategy` define common workflow
+- Subclasses override specific steps
+- Ensures consistent behavior across variants
 
-- Plain text file storing: `path hash` per line
-- Updated when files are added or reset
-- Synchronized with commits on branch switches
+### Key Components
 
-### Commit Format
+**Commands Package**
+- Organized by feature (add, commit, checkout, etc.)
+- Each command has: Command class, Options class, Strategy class(es)
+- Picocli annotations define CLI interface
 
+**Utils Package**
+- `ObjectStore`: Content-addressable storage with SHA-1 hashing
+- `Indexing`: Manages staging area operations
+- `RepositoryState`: Queries current repository state
+- `OutputFormatter`: Centralized output formatting
+- `FileUtils`: File system operations with path normalization
+
+**Models Package**
+- `Commit`: Represents a commit with metadata and file mappings
+- `FileEntry`: Represents a staged file with hash
+- `WorkingDirectoryStatus`: Categorizes file states
+- `ObjectContent`: Generic storage object representation
+
+### Storage Design
+
+**Content-Addressable Storage**
+- Files stored by SHA-1 hash of content
+- Sharded into directories using first 2 hash characters
+- Format: `objects/ab/cdef123...`
+
+**Object Format**
+```
+type size\0content
+```
+
+**Index (Staging Area)**
+- Plain text file: `.gitter/index`
+- Format: `path hash` per line
+- Represents full snapshot of tracked files
+
+Example:
+```
+src/App.java 3a1f5c8d9e2b4a7c6f1e0d9c8b7a6f5e4d3c2b1a
+README.md 7b2e8f3c1a9d4e6b8c5f2a1e9d7c4b6a8f3e1c2d
+pom.xml 9d4f6a2c8e1b7a3f5c9e2d1a8b6c4e7f3a9d1c2e
+```
+
+**Commit Format**
 ```
 message: <commit message>
 timestamp: <ISO 8601 timestamp>
@@ -299,45 +287,66 @@ files:
 ...
 ```
 
-### Path Normalization
+### Extensibility Points
 
-Commands work from subdirectories:
+**Adding New Commands**
+1. Create command package under `commands/`
+2. Implement `<Command>Command.java` with Picocli annotations
+3. Create `<Command>Options.java` with builder
+4. Implement `CommandStrategy<Options>` interface
+5. Register in `App.java` subcommands
+
+**Adding New Options to Existing Commands**
+1. Add field to Options class with Picocli annotation
+2. Modify or create new Strategy to handle option
+3. Update Options.getStrategy() to route appropriately
+
+**Custom Output Formatters**
+- All output goes through `OutputFormatter`
+- Modify methods to change display format
+- Centralized location for all UI changes
+
+## Testing
+
+### Run Tests
+
 ```bash
-cd src/
-gitter add file.txt    # Correctly resolves to src/file.txt
+mvn test
 ```
 
-## Limitations
+### Test Coverage
 
-Intentional simplifications for assignment scope:
+- **142 unit tests** across 17 test files
+- 100% pass rate
+- Comprehensive coverage of:
+  - **Models** - Commit serialization, file entries, working directory status
+  - **Utils** - Object storage, SHA-1 hashing, index operations, file utilities, ignore patterns, repository state
+  - **Command Options** - Validation and routing logic for all 8 commands
 
-1. **Diff Command**: Single file only (no glob patterns, directories, or show-all)
-2. **Checkout**: Blocks on ANY changes (Git only blocks conflicting changes)
-3. **Commit References**: Only `HEAD~N` notation (no branch names, tags, or hashes)
-4. **No Remote Operations**: No push, pull, fetch, or remote repositories
-5. **No Merge**: Single branch workflow only
-6. **No Staging Area Partials**: Can't stage partial file changes
+## Project Structure
 
-## Statistics
-
-- **Source Code**: ~2,800 lines
-- **Test Code**: ~1,200 lines
-- **Test Coverage**: 59 unit tests (100% pass rate)
-- **Commands**: 8 (init, add, commit, status, log, diff, reset, checkout)
-- **Build Time**: ~2 seconds
-- **JAR Size**: ~5 MB (includes dependencies)
+```
+gitter/
+├── src/main/java/com/example/gitter/
+│   ├── commands/           # Command implementations
+│   │   ├── add/           # Add command with strategy
+│   │   ├── checkout/      # Checkout with multiple strategies
+│   │   ├── commit/        # Commit with standard/stage-all strategies
+│   │   ├── diff/          # Diff command
+│   │   ├── init/          # Init command
+│   │   ├── log/           # Log command
+│   │   ├── reset/         # Reset with commit/file strategies
+│   │   ├── status/        # Status command
+│   │   └── strategy/      # CommandStrategy interface
+│   ├── constants/         # Centralized constants
+│   ├── models/            # Domain models
+│   ├── utils/             # Core functionality
+│   └── App.java           # Application entry point
+├── src/test/java/         # Unit tests
+├── pom.xml                # Maven configuration
+└── gitter                 # Wrapper script
+```
 
 ## License
 
-This is an educational project created for learning purposes.
-
-## Author
-
-Created as a coding assignment to demonstrate understanding of:
-- Version control system internals
-- Git architecture
-- Content-addressable storage
-- Command-line application design
-- Java development best practices
-
-
+Educational project for learning purposes.
